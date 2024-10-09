@@ -1,23 +1,35 @@
-interface Contact {
+export interface Contact {
    id: string;
-   avatar_url: string;
-   first_name: string;
-   last_name: string;
+   avatarUrl: string;
+   firstName: string;
+   lastName: string;
    company: string;
    details: string;
    email: string;
    phone: {
-      area_code: string;
+      areaCode: string;
       number: string;
    };
-   addresses: Array<{
-      line_1: string;
-      line_2: string;
-      zip_code: string;
-      city_id: string;
-      state_id: string;
-   }>;
+   addresses: {
+      line1: string;
+      line2: string;
+      zipCode: string;
+      cityId: string;
+      stateId: string;
+   }[];
 }
+
+export type ContactCardProps = Omit<Contact, 'firstName' | 'lastName' | 'phone' | 'addresses'> & {
+   fullName: string;
+   phoneNumber: string;
+   addresses: {
+      line1: string;
+      line2?: string;
+      zipCode: string;
+      city?: string;
+      state?: string;
+   }[];
+};
 
 interface City {
    id: string;
