@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useReducer, ReactNode } from 'react';
 
-// Definir los tipos
+// Types
 type Author = {
    id: number;
    name: string;
@@ -34,7 +34,7 @@ type LibraryAction =
    | { type: 'SET_BOOKS'; payload: Book[] }
    | { type: 'SET_USERS'; payload: User[] };
 
-// Crear el contexto
+// Creating the context
 const LibraryContext = createContext<
    | {
         state: LibraryState;
@@ -62,7 +62,7 @@ export function LibraryProvider({ children }: { children: ReactNode }) {
    return <LibraryContext.Provider value={{ state, dispatch }}>{children}</LibraryContext.Provider>;
 }
 
-// Hook personalizado para usar el contexto
+// Hook to access the context
 export function useLibrary() {
    const context = useContext(LibraryContext);
    if (context === undefined) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ContactsScreenProps } from './contacts.interface';
 import { findById, truncate } from './utils';
-import { ContactCard } from './contact-card';
+import { ContactCard } from './ContactCard';
 
 export const ContactsScreen: React.FC<ContactsScreenProps> = ({ contacts, cities, states }) => {
    const contactsToDisplay = contacts.map((contact) => ({

@@ -1,4 +1,4 @@
-import { ContactsScreen } from '@/components/contacts/contacts-screen';
+import { ContactsScreen } from '@/components/contacts/ContactsScreen';
 import { ContactsScreenProps } from '@/components/contacts/contacts.interface';
 
 async function getContacts(): Promise<ContactsScreenProps> {

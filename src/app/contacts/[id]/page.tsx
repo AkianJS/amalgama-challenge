@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { ContactProfile } from '@/components/contacts/contact-profile';
+import { ContactProfile } from '@/components/contacts/ContactProfile';
 import { Contact } from '@/components/contacts/contacts.interface';
 
 async function getContact(id: string): Promise<Contact> {

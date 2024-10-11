@@ -13,6 +13,7 @@ export function useLibraryData() {
             ]);
 
             const booksData = await booksResponse.json();
+            console.log(booksData);
             const usersData = await usersResponse.json();
 
             dispatch({ type: 'SET_BOOKS', payload: booksData.response });
