@@ -15,14 +15,14 @@ type Book = {
 };
 
 type FavoriteBook = Book & {
-   favorited_at: string;
+   favoritedAt: string;
 };
 
 type User = {
    id: number;
    email: string;
    nickname: string;
-   favorite_books: FavoriteBook[];
+   favoriteBooks: FavoriteBook[];
 };
 
 type LibraryState = {

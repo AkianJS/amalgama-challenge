@@ -1,52 +1,62 @@
-# 🚀 Next.js Boilerplate
+# Welcome to Amalgama Challenge
 
-This is a **Next.js boilerplate** that comes with configured **ESLint** rules and **Prettier** for code formatting. All unnecessary files and placeholders from the original `create-next-app` template have been removed, so you can focus directly on development.
+## How to run the project
 
-## 🛠️ Installation & Setup
+You can try the project in the following link: https://amalgama-challenge.vercel.app/
 
-### 1. Clone the Repository
+Or you can run the project locally by following these steps:
 
-To get started, clone the repository by running the following command:
+1. Clone the repository
+2. Install docker (For windows use Docker Desktop and install WSL2)
+3. Run `docker compose up`
 
-```bash
-git clone https://github.com/AkianJS/nextjs-boilerplate.git
-```
+The project will be available at `http://localhost:3000`, be sure that the port is available.
 
-### 2. Install Dependencies
+### Solutions
 
-This project uses `pnpm` for package management. If you don't have it installed, you can install it globally by running:
+1. Exercise 1:
+   1.1 Some problems that I've found are:
 
-```bash
-npm install -g pnpm
-```
+-  Some functions were not implemented.
+-  Navigation and contacts logic were in the same file.
+-  The page was not spliting the logic into components.
+-  Array.map was used without a key.
 
-Once `pnpm` is installed, navigate to the cloned directory and install the project dependencies:
+1.2 The refactored code is under the folder `src/components/contacts`.
 
-```bash
-cd nextjs-boilerplate
-pnpm install
-```
+1.3 Some improvements after the refactoring:
 
-### 3. Run the Development Server
+-  The page was splited into components.
+-  The logic was separated from the navigation.
+-  The use of keys was added.
 
-To start the development server, run the following command:
+All of this makes the code more readable and easier to maintain. As well as solving the problems mentioned before,
+like the use of keys, which is a problem that lead react to not understand which items need to be changed or which ones
+are having an interaction.
 
-```bash
-pnpm run dev
-```
+1.4 The view of a contact is under the folder `src/components/contacts` with the name `ContactProfile.tsx`.
+You can try it by clicking on a contact card. It will use the Next.js router to navigate to the contact profile page.
 
-Now open [http://localhost:3000](http://localhost:3000) in your browser to see the app in action.
+2. Exercise 2:
 
-## 🚨 ESLint & Prettier
+> Note: I didn't understand completely this exercise
 
-This boilerplate is pre-configured with **ESLint** for linting and **Prettier** for code formatting. You can customize the configuration by modifying the `.eslintrc.js` and `.prettierrc` files.
+2.1 I've created a custom hook to fetch the library data from the API and set the state in the context.
+The context is in the file `src/context/LibraryContext.tsx`.
+Also, I saved the data in the localStorage to avoid extra requests to the API.
 
-## 🧹 Clean Slate for Development
+2.2 I didn't get this point about the "json" file. I attached the json under `src/books.json`.
 
-Everything you don't need has been removed from the initial `create-next-app` setup. Once you've cloned the repository, you can remove the `.git` folder and start fresh with your own repository:
+2.3 The state management solution brings some benefits like:
 
-```bash
-rm -rf .git
-```
+-  Avoid extra requests to the API.
+-  Have the data always available across the application.
+-  Easier to manage the data.
 
-After this, feel free to initialize a new Git repository for your project and start developing!
+3. Exercise 3:
+
+3.1 The view for the login is under the `/login` route, with the corresponding validation.
+You can see the file under `src/app/login/page.tsx`.
+
+3.2 After login, the user is redirected to the `/dashboard` route.
+You can see the file under `src/app/dashboard/page.tsx`.

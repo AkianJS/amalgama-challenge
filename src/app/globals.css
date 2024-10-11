@@ -2,23 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-   /* Define variables to use in light theme */
-   --foreground-rgb: 0, 0, 0;
-   --background-main: 245, 245, 245;
-}
-
-@media (prefers-color-scheme: dark) {
-   :root {
-      /* Define the same variables as in root but for dark theme */
-      --foreground-rgb: 255, 255, 255;
-      --background-main: 51, 51, 51;
-   }
-}
-
 body {
-   color: rgb(var(--foreground-rgb));
-   background-color: rgb(var(--background-main));
+   @apply bg-gray-900 text-white;
 }
 
 @layer utilities {
