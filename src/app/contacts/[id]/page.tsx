@@ -21,6 +21,7 @@ export default async function ContactPage({ params }: { params: { id: string } }
    try {
       contact = await getContact(params.id);
    } catch (error) {
+      // eslint-disable-next-line no-console
       console.error('Error fetching contact:', error);
       notFound();
    }

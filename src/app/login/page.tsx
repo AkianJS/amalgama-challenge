@@ -45,6 +45,7 @@ export default function Login() {
          }
       } catch (err) {
          setError('Network error. Please check your connection.');
+         // eslint-disable-next-line no-console
          console.error(err);
       }
    };
