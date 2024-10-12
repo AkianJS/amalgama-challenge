@@ -2,6 +2,8 @@ import { ContactsScreen } from '@/components/contacts/ContactsScreen';
 import { ContactsScreenProps } from '@/components/contacts/contacts.interface';
 import { PORT } from '@/libs/constants';
 
+export const dynamic = 'force-dynamic';
+
 async function getContacts(): Promise<ContactsScreenProps> {
    const res = await fetch(PORT + '/api/contacts');
    if (!res.ok) {

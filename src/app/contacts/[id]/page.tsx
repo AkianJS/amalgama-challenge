@@ -3,6 +3,8 @@ import { ContactProfile } from '@/components/contacts/ContactProfile';
 import { Contact } from '@/components/contacts/contacts.interface';
 import { PORT } from '@/libs/constants';
 
+export const dynamic = 'force-dynamic';
+
 async function getContact(id: string): Promise<Contact> {
    const res = await fetch(PORT + '/api/contacts', {
       method: 'POST',
