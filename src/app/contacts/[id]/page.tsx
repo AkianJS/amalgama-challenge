@@ -1,12 +1,12 @@
-import { notFound } from 'next/navigation';
+'use client';
+
+import { useState, useEffect } from 'react';
+import { useParams, notFound } from 'next/navigation';
 import { ContactProfile } from '@/components/contacts/ContactProfile';
 import { Contact } from '@/components/contacts/contacts.interface';
-import { PORT } from '@/libs/constants';
-
-export const dynamic = 'force-dynamic';
 
 async function getContact(id: string): Promise<Contact> {
-   const res = await fetch(PORT + '/api/contacts', {
+   const res = await fetch('/api/contacts', {
       method: 'POST',
       body: JSON.stringify({ id }),
    });
@@ -18,15 +18,32 @@ async function getContact(id: string): Promise<Contact> {
    return res.json();
 }
 
-export default async function ContactPage({ params }: { params: { id: string } }) {
-   let contact: Contact;
+export default function ContactPage() {
+   const { id } = useParams();
+   const [contact, setContact] = useState<Contact | null>(null);
+   const [error, setError] = useState<Error | null>(null);
 
-   try {
-      contact = await getContact(params.id);
-   } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error('Error fetching contact:', error);
+   useEffect(() => {
+      async function fetchContact() {
+         try {
+            const fetchedContact = await getContact(id as string);
+            setContact(fetchedContact);
+         } catch (err) {
+            // eslint-disable-next-line no-console
+            console.error('Error fetching contact:', err);
+            setError(err instanceof Error ? err : new Error('An error occurred'));
+         }
+      }
+
+      fetchContact();
+   }, [id]);
+
+   if (error) {
       notFound();
+   }
+
+   if (!contact) {
+      return <div>Loading...</div>;
    }
 
    return (
