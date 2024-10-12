@@ -1,8 +1,9 @@
 import { ContactsScreen } from '@/components/contacts/ContactsScreen';
 import { ContactsScreenProps } from '@/components/contacts/contacts.interface';
+import { PORT } from '@/libs/constants';
 
 async function getContacts(): Promise<ContactsScreenProps> {
-   const res = await fetch(process.env.URL + '/api/contacts');
+   const res = await fetch(PORT + '/api/contacts');
    if (!res.ok) {
       throw new Error('Failed to fetch contacts');
    }

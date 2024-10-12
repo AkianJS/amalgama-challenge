@@ -1,9 +1,10 @@
 import { notFound } from 'next/navigation';
 import { ContactProfile } from '@/components/contacts/ContactProfile';
 import { Contact } from '@/components/contacts/contacts.interface';
+import { PORT } from '@/libs/constants';
 
 async function getContact(id: string): Promise<Contact> {
-   const res = await fetch(process.env.URL + '/api/contacts', {
+   const res = await fetch(PORT + '/api/contacts', {
       method: 'POST',
       body: JSON.stringify({ id }),
    });
